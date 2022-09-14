@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setSearchBar } from '../HomePage/Reducer/searchBarSlicer';
 import SearchBar from './SearchBar'
 import EmptyBag from './EmptyBag';
+import SetWindowSize from '../../Helpers/SetWindowSize';
 
 
 
@@ -42,9 +43,9 @@ export default function Header() {
 const onRestaurantBtnClicked=() =>{
        Navigate('/Restaurant');
 }
-const isMobile = window.innerWidth <= 500;
+const windowSize = SetWindowSize();
 
-if(isMobile)
+if(windowSize <= 600){
   return (
     <NavBar>
           <BurgerIcon>
@@ -66,6 +67,7 @@ if(isMobile)
         {burgerSideBar && (<BurgerSideBar/>)}
     </NavBar>
   );
+}
 else{
   return(
     <DesktopNavBar>
